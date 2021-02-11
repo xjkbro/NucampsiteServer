@@ -52,6 +52,7 @@ function auth(req, res, next) {
         const user = auth[0];
         const pass = auth[1];
         if (user === "admin" && pass === "password") {
+            res.cookie("user", "admin", { signed: true });
             return next(); // you are authorized
         } else {
             // incorrect login
